@@ -29,6 +29,7 @@ $(function () {
         var sendData = form.serialize();
         $.post(actionUrl, sendData).done(function (data) {
             PlaceHolderElement.find('.modal').modal('hide');
+            window.location.href = "/home/index";
         });
     })
 
@@ -39,6 +40,7 @@ $(function () {
         var sendData = form.serialize();
         $.post(decodedUrl, sendData).done(function (data) {
             PlaceHolderElement.find('.modal').modal('hide');
+            window.location.href = "/home/index";
         });
     })
 })
