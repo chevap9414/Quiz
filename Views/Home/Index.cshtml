@@ -1,0 +1,52 @@
+﻿@model IEnumerable<UserViewModel>
+
+@{
+    ViewData["Title"] = "ค้นหาเจ้าของ";
+}
+
+<div id="PlaceHolderHere"></div>
+
+<button id="btn" type="button" class="btn btn-primary btn-flat" data-toggle="ajax-modal-add" data-target="#addUser" data-url-add="@Url.Action("Create")"><i class="fas fa-plus"></i> Add</button>
+<table id="tbl_hn" class="table table-hover" style="font-size:smaller">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Id)</th>
+            <th>@Html.DisplayNameFor(model => model.HN)</th>
+            <th>@Html.DisplayNameFor(model => model.FirstName)</th>
+            <th>@Html.DisplayNameFor(model => model.Phone)</th>
+            <th>@Html.DisplayNameFor(model => model.Email)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var row in Model)
+        {
+            <tr>
+                <td><button id="btn" type="button" class="btn btn-default btn-flat" data-toggle="ajax-modal-edit" data-target="#addUser" data-url-edit="@Url.Action($"Edit/{row.Id}")"><i class="fas fa-edit"></i></button></td>
+                <td>@Html.DisplayFor(modelRow => row.HN)</td>
+                <td>@Html.DisplayFor(modelRow => row.FirstName) @Html.DisplayFor(modelRow => row.LastName)</td>
+                <td>@Html.DisplayFor(modelRow => row.Phone)</td>
+                <td>@Html.DisplayFor(modelRow => row.Email)</td>
+            </tr>
+        }
+
+</table>
+
+@section Scripts{ 
+<script>
+    $(document).ready(function () {
+        $('#tbl_hn').DataTable({
+            'pagingType': 'numbers',
+            'searching': false,
+            'paging': true,
+            'pages': true,
+            'bLengthChange': true,
+            "lengthMenu": [[2, 5, 10, -1], [2, 5, 10, "All"]],
+            language: {
+                info: "Page _START_ of _END_ ( _TOTAL_ items)",
+                lengthMenu: "Page size _MENU_ "
+            },
+            'dom': "t<'row'<'col-md-4'i><'col-md-4'p><'col-md-4 text-right'l>>"
+        });
+    });
+</script>
+}

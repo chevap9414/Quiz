@@ -1,0 +1,92 @@
+﻿@model UserViewModel
+<!-- Modal -->
+<div class="modal fade" id="addUser" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="addUserLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addUserLabel">เจ้าของ</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="border-top: 1px solid green;">
+                <form asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <div class="input-group input-group-sm">
+                                    <input asp-for="Id" type="hidden" />
+                                    <div class="input-group-prepend">
+                                        <button type="button" class="btn" style="background-color: green; color: white">HN </button>
+                                    </div>
+                                    <input type="text" asp-for="HN" class="form-control" />
+                                    <span asp-validation-for="HN" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <div class="input-group input-group-sm">
+                                    <div class="input-group-prepend">
+                                        <button type="button" class="btn" style="background-color: green; color: white">ชื่อ </button>
+                                    </div>
+                                    <input type="text" class="form-control" asp-for="FirstName"><span class="text-danger">*</span>
+                                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <div class="input-group input-group-sm">
+                                    <div class="input-group-prepend">
+                                        <button type="button" class="btn" style="background-color: green; color: white">นามสกุล </button>
+                                    </div>
+                                    <input type="text" class="form-control" asp-for="LastName"><span class="text-danger">*</span>
+                                    <span asp-validation-for="LastName" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <div class="input-group input-group-sm">
+                                    <div class="input-group-prepend">
+                                        <button type="button" class="btn" style="background-color: green; color: white">เบอร์ติดต่อ </button>
+                                    </div>
+                                    <input type="text" class="form-control" asp-for="Phone"><span class="text-danger">*</span>
+                                    <span asp-validation-for="Phone" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="input-group input-group-sm">
+                                    <div class="input-group-prepend">
+                                        <button type="button" class="btn" style="background-color: green; color: white">Email </button>
+                                    </div>
+                                    <input type="text" class="form-control" asp-for="Email"><span class="text-danger">*</span>
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <div class="input-group input-group-sm">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer" style="border-top: 1px solid green;">
+                <button type="button" class="btn btn-light btn-sm" data-dismiss="modal"><i class="far fa-arrow-alt-circle-left"></i> Cancel</button>
+                <button type="button" class="btn btn-primary btn-sm" data-save="modal"><i class="fas fa-save"></i> Save</button>
+                <button type="button" class="btn btn-danger btn-sm" data-delete="modal" data-url-delete="@Url.Action($"Delete/{Model.Id}")"><i class="fas fa-times"></i> Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
